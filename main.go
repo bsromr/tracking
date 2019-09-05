@@ -28,7 +28,7 @@ func main() {
 		getText := getText(HWND(hwnd))
 		if (control2 != getText && hwnd != 0 && hwnd != 262234 && hwnd != 65852) || (control != hwnd && hwnd != 0 && hwnd != 262234 && hwnd != 65852) {
 			//Here I am checking the number of 262234 and 65852. These are
-			//window transition and
+			//window transition codes.
 			fmt.Printf("Now you're in->>  %s // hwnd-> %v \n", getText, hwnd)
 		}
 		control = hwnd
