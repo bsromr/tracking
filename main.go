@@ -17,11 +17,22 @@ type (
 	HWND   HANDLE
 )
 
+var hwnd2 uintptr
+
 func main() {
+	fmt.Println("Hi, I am waiting until you open any window")
+	control := tW("GetForegroundWindow")
+	control2 := getText(HWND(control))
 	for {
 		hwnd := tW("GetForegroundWindow")
 		getText := getText(HWND(hwnd))
-		fmt.Printf("Now you're in->>  %s // hwnd-> %v \n", getText, hwnd)
+		if (control2 != getText && hwnd != 0 && hwnd != 262234 && hwnd != 65852) || (control != hwnd && hwnd != 0 && hwnd != 262234 && hwnd != 65852) {
+			//Here I am checking the number of 262234 and 65852. These are
+			//window transition and
+			fmt.Printf("Now you're in->>  %s // hwnd-> %v \n", getText, hwnd)
+		}
+		control = hwnd
+		control2 = getText
 	}
 }
 
