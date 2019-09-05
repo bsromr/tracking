@@ -18,8 +18,6 @@ type (
 	HWND   HANDLE
 )
 
-var hwnd2 uintptr
-
 func main() {
 	fmt.Println("Hi, I am waiting until you open any window")
 	control := tW("GetForegroundWindow")
