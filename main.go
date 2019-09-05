@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"syscall"
+	"time"
 	"unsafe"
 
 	"golang.org/x/sys/windows"
@@ -33,6 +34,7 @@ func main() {
 		}
 		control = hwnd
 		control2 = getText
+		time.Sleep(500 * time.Millisecond)
 	}
 }
 
