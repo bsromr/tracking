@@ -27,7 +27,7 @@ func main() {
 	for {
 		hwnd := tW("GetForegroundWindow")
 		getText := getText(HWND(hwnd))
-		if control != hwnd && control2 != "" && hwnd != 0 {
+		if (control != hwnd && hwnd != 0) || (control2 != "" && control2 != getText) {
 			fmt.Printf("Now you're in->>  %s // hwnd-> %v \n", getText, hwnd)
 		}
 		control = hwnd
