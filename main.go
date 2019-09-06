@@ -9,9 +9,11 @@ import (
 	"golang.org/x/sys/windows"
 )
 
-var win = windows.NewLazyDLL("user32.dll")
-var getWindowText = win.NewProc("GetWindowTextW")
-var getWindowTextLenght = win.NewProc("GetWindowTextLengthW")
+var (
+	win                 = windows.NewLazyDLL("user32.dll")
+	getWindowText       = win.NewProc("GetWindowTextW")
+	getWindowTextLenght = win.NewProc("GetWindowTextLengthW")
+)
 
 type (
 	HANDLE uintptr
@@ -25,9 +27,7 @@ func main() {
 	for {
 		hwnd := tW("GetForegroundWindow")
 		getText := getText(HWND(hwnd))
-		if (control2 != getText && hwnd != 0 && hwnd != 262234 && hwnd != 65852) || (control != hwnd && hwnd != 0 && hwnd != 262234 && hwnd != 65852) {
-			//Here I am checking the number of 262234 and 65852. These are
-			//window transition codes.
+		if control != hwnd && control2 != "" && hwnd != 0 {
 			fmt.Printf("Now you're in->>  %s // hwnd-> %v \n", getText, hwnd)
 		}
 		control = hwnd
